@@ -23,6 +23,14 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{% static 'carousel.css' %}" />
+
+  <style>
+    .menutest{
+      border-left: 3px solid grey;
+      height: auto;
+    }
+  </style>
+
   </head>
   <body>
 
@@ -30,18 +38,44 @@
     <div class="modal fade" id="largeShoes" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge" aria-hidden="true">
     <div class="modal-dialog modal-lg">
     <div class="modal-content">
-
+    <!--
     <div class="modal-header">
+    
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-      <h4 class="modal-title" id="modalLabelLarge">Login</h4>
+      <h4 class="modal-title" id="modalLabelLarge"> Register / Login</h4>
+      
+    </div>
+    -->
+    <!--TOP OF FORMS-->
+    <div class="topoftheworld col-sm-1">
+    </div>
+    <!--END OF TOP OF FORMS-->
+
+    <div class="modal-body row">
+      <!--Large shoes are usually avoided by people with small feet.-->
+      <div class="stuff col-sm-1">
+      </div>
+      <div class="divde1 col-sm-4">
+      <h2>Register</h2>
+      {% crispy form %}
+      </div>
+      <div class="menutest2 col-sm-1">
+            </div>
+            <div class="menutest col-sm-1">
+            </div>
+      <div class="divide2 col-sm-4">
+      <h2>Login</h2>
+      {% crispy form %}
+      </div>
     </div>
 
-    <div class="modal-body">
-      Large shoes are usually avoided by people with small feet.
-      {% crispy form %}
+    <!--Bot OF FORMS-->
+    <div class="topoftheworld col-sm-1">  
     </div>
+    <!--END OF bot OF FORMS-->
+
 
     </div>
     </div>
