@@ -1,4 +1,6 @@
 {% load static %}
+{% load crispy_forms_tags %}
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -23,6 +25,29 @@
     <link rel="stylesheet" type="text/css" href="{% static 'carousel.css' %}" />
   </head>
   <body>
+
+  <!--==========The modal ===============-->
+    <div class="modal fade" id="largeShoes" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title" id="modalLabelLarge">Login</h4>
+    </div>
+
+    <div class="modal-body">
+      Large shoes are usually avoided by people with small feet.
+      {% crispy form %}
+    </div>
+
+    </div>
+    </div>
+    </div>
+    <!--==========End of Modal=============-->
+
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -51,6 +76,9 @@
         </ul>
         
         <form class="form-inline mt-2 mt-md-0">
+          <button type="button" class="btn btn-outline-primary mr-2 my-2" data-toggle="modal" data-target="#largeShoes">
+            Login
+          </button>
           <button type="button" class="btn btn-outline-primary mr-2 my-2">Login</button>
           <button type="button" class="btn btn-outline-primary mr-2 my-2">Sign Up</button>
         </form>
@@ -190,6 +218,8 @@
       </footer>
 
     </div><!-- /.container -->
+
+
 
 
     <!-- Bootstrap core JavaScript

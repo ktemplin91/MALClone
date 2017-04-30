@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,5 @@ STATIC_URL = '/static/'
 #MEDIA_ROOT = os.path.abspath('../AudioLogo/media/')
 #MEDIA_ROOT = '/Users/Kevin/Documents/AudioLogo/media/'
 #MEDIA_URL = 'media/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
