@@ -1,4 +1,6 @@
 {% load static %}
+{% load crispy_forms_tags %}
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -21,8 +23,65 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{% static 'carousel.css' %}" />
+
+  <style>
+    .menutest{
+      border-left: 3px solid grey;
+      height: auto;
+    }
+  </style>
+
   </head>
   <body>
+
+  <!--==========The modal ===============-->
+    <div class="modal fade" id="largeShoes" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    <!--
+    <div class="modal-header">
+    
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title" id="modalLabelLarge"> Register / Login</h4>
+      
+    </div>
+    -->
+    <!--TOP OF FORMS-->
+    <div class="topoftheworld col-sm-1">
+    </div>
+    <!--END OF TOP OF FORMS-->
+
+    <div class="modal-body row">
+      <!--Large shoes are usually avoided by people with small feet.-->
+      <div class="stuff col-sm-1">
+      </div>
+      <div class="divde1 col-sm-4">
+      <h2>Register</h2>
+      {% crispy registrationform %}
+      </div>
+      <div class="menutest2 col-sm-1">
+            </div>
+            <div class="menutest col-sm-1">
+            </div>
+      <div class="divide2 col-sm-4">
+      <h2>Login</h2>
+      {% crispy form %}
+      </div>
+    </div>
+
+    <!--Bot OF FORMS-->
+    <div class="topoftheworld col-sm-1">  
+    </div>
+    <!--END OF bot OF FORMS-->
+
+
+    </div>
+    </div>
+    </div>
+    <!--==========End of Modal=============-->
+
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -31,9 +90,9 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+           <li class="nav-item">
             <a class="nav-link" href="{% url 'animepage' %}">Anime</a>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'mangapage' %}">Manga</a>
@@ -49,10 +108,11 @@
             <a class="nav-link disabled" href="#">Disabled</a>-->
           </li>
         </ul>
-
+        
         <form class="form-inline mt-2 mt-md-0">
-          <button type="button" class="btn btn-outline-primary mr-2 my-2">Login</button>
-          <button type="button" class="btn btn-outline-primary mr-2 my-2">Sign Up</button>
+          <button type="button" class="btn btn-outline-primary mr-2 my-2" data-toggle="modal" data-target="#largeShoes">
+            Login
+          </button>
         </form>
 
         <form class="form-inline mt-2 mt-md-0">
@@ -62,19 +122,18 @@
       </div>
     </nav>
     </li>
+    
    
     <!--Start of the test text -->
-	<p>hello world </p> 
-	<p>hello world </p>
-	<p>hello world </p>
-	<p>hello world </p>
-	<p>hello world </p>
+  {% block content %}
+	
+  {% endblock content %}
      <!--End of Test Text -->
 
 <!-- FOOTER -->
       <footer>
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; 2017 Ani-Cat, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
 
     </div><!-- /.container -->
