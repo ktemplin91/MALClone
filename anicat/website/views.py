@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from website.forms import *
+import json
 # Create your views here.
 
 def index(request):
@@ -43,3 +44,23 @@ def helppage(request):
 	}
 	return render(request, "helppage.html", {'form': MessageForm(),'registrationform': RegistrationForm()})
 
+
+def profilepage(request):
+	context={
+
+	}
+	return render(request, "userprofile.html", {'form': MessageForm(),'registrationform': RegistrationForm()})	
+
+
+def login(request):                                                                                                                         
+    if request.method == 'POST':                                                                                                                                                                                                           
+        login_form = AuthenticationForm(request, request.POST)
+        response_data = {}                                                                              
+        if login_form.is_valid():                                                                                                           
+            response_data['result'] = 'Success!'
+            response_data['message'] = 'You"re logged in' 
+        else:
+            response_data['result'] = 'failed'
+            response_data['message'] = 'You messed up'   
+
+        return HttpResponse(json.dumps(response_data), content_type="application/json") 

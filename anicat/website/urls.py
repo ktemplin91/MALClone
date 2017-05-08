@@ -10,6 +10,4 @@ urlpatterns = [
     url(r'^industry$', views.industrypage, name='industrypage'),
     url(r'^watch$', views.watchpage, name='watchpage'),
     url(r'^help$', views.helppage, name='helppage'),
-    url(r'^userprofile$', views.profilepage, name='profilepage'),
-
 ]
