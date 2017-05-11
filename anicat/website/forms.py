@@ -39,7 +39,7 @@ class RegistrationForm(forms.Form):
         Field('username', css_class='input-xlarge'),
         PrependedText('password', '@', placeholder="password", autocomplete='off'),
         FormActions(
-            Submit('save_changes', 'Register', css_class="btn-primary"),
+            Submit('submit', 'Register', css_class="btn-primary"),
             Submit('cancel', 'Cancel'),
         )
     )    

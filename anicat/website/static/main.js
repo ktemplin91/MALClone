@@ -30,3 +30,25 @@ $("#post-form").change(function () {
       });
 
     });
+
+
+$("reg-form").on('submit', '#new_user_form', function(e){
+    e.preventDefault();
+
+    $.ajax({
+        type: 'POST',
+        url: '/user/create',
+        data:{
+          username:$('#username').val(),
+          email:$('#email').val(),
+          password:$('#password').val(),
+          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+        },
+        success: function(){
+          alert("Created New User");
+
+        }
+        
+
+    });
+});

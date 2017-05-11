@@ -62,7 +62,10 @@
       </div>
       <div class="divde1 col-sm-4">
       <h2>Register</h2>
+      {% csrf_token %}
+      <form method="post" id="new_user_form" action="user/create/">
       {% crispy registrationform %}
+      </form>
       </div>
       <div class="menutest2 col-sm-1">
             </div>
