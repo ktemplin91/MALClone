@@ -11,5 +11,7 @@ urlpatterns = [
     url(r'^watch$', views.watchpage, name='watchpage'),
     url(r'^help$', views.helppage, name='helppage'),
     url(r'^userprofile$', views.profilepage, name='profilepage'),
+    url(r'^ajax/validate_username/$', views.validate_username, name='validate_username'),
+
 
 ]

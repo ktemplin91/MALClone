@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.http import JsonResponse
 from website.forms import *
 import json
 # Create your views here.
@@ -54,7 +56,7 @@ def profilepage(request):
 
 def login(request):                                                                                                                         
     if request.method == 'POST':                                                                                                                                                                                                           
-        login_form = AuthenticationForm(request, request.POST)
+        login_form = MessageForm(request, request.POST)
         response_data = {}                                                                              
         if login_form.is_valid():                                                                                                           
             response_data['result'] = 'Success!'
@@ -63,4 +65,14 @@ def login(request):
             response_data['result'] = 'failed'
             response_data['message'] = 'You messed up'   
 
-        return HttpResponse(json.dumps(response_data), content_type="application/json") 
+        return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+def validate_username(request):
+    username = request.GET.get('username', None)
+    data = {
+        'is_taken': User.objects.filter(username__iexact=username).exists()
+    }
+    return JsonResponse(data)        
+
+
+

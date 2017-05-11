@@ -24,6 +24,9 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{% static 'carousel.css' %}" />
 
+    <script type="text/javascript" src="{% static 'main.js' %}"></script>
+
+    
   <style>
     .menutest{
       border-left: 3px solid grey;
@@ -67,7 +70,10 @@
             </div>
       <div class="divide2 col-sm-4">
       <h2>Login</h2>
+      {% csrf_token %}
+      <form action="ajax/validate_username/" method="POST" id="post-form">
       {% crispy form %}
+      </form>
       </div>
     </div>
 
@@ -137,6 +143,8 @@
       </footer>
 
     </div><!-- /.container -->
+
+
 
 
     <!-- Bootstrap core JavaScript
