@@ -23,9 +23,6 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{% static 'carousel.css' %}" />
 
-    <script type="text/javascript" src="{% static 'main.js' %}"></script>
-
-
   <style>
     .menutest{
       border-left: 3px solid grey;
@@ -179,10 +176,14 @@
                             xhr.setRequestHeader("X-CSRFToken", csrftoken);
                         }
                     },
-                    success: function(){
+                    success : function(){
+                          $('#largeShoes').modal('hide');
                           alert("Created New User");
-                    }
+                    }//,
+                     //error : function(){}
+
                   });
+                  $.ajax({});
             });
             function getCookie(name) {
             var cookieValue = null;

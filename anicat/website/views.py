@@ -89,4 +89,4 @@ def create_user(request):
             )
         else:
             print(request)
-    return render(request,'index.html',{'form': MessageForm(),'registrationform': RegistrationForm()})
+    return HttpResponse(json.dumps({'success' : 'success'}), content_type="application/json")
