@@ -52,19 +52,19 @@ def profilepage(request):
 	context={
 
 	}
-	return render(request, "userprofile.html", {'form': MessageForm(),'registrationform': RegistrationForm()})	
+	return render(request, "userprofile.html", {'form': MessageForm(),'registrationform': RegistrationForm()})
 
 
-def login(request):                                                                                                                         
-    if request.method == 'POST':                                                                                                                                                                                                           
+def login(request):
+    if request.method == 'POST':
         login_form = MessageForm(request, request.POST)
-        response_data = {}                                                                              
-        if login_form.is_valid():                                                                                                           
+        response_data = {}
+        if login_form.is_valid():
             response_data['result'] = 'Success!'
-            response_data['message'] = 'You"re logged in' 
+            response_data['message'] = 'You"re logged in'
         else:
             response_data['result'] = 'failed'
-            response_data['message'] = 'You messed up'   
+            response_data['message'] = 'You messed up'
 
         return HttpResponse(json.dumps(response_data), content_type="application/json")
 
@@ -73,19 +73,20 @@ def validate_username(request):
     data = {
         'is_taken': User.objects.filter(username__iexact=username).exists()
     }
-    return JsonResponse(data)  
+    return JsonResponse(data)
 
 @csrf_protect
 def create_user(request):
- 	if request.method == 'POST':
- 		form = RegistrationForm(request.POST)
- 		if form.is_valid():
- 			user = User.objects.create_user(
- 				username = request.POST['username'],
- 				email = request.POST['email'],
- 				password = request.POST['password'],
- 			)
- 	return render(request,'index.html',{'form': MessageForm(),'registrationform': RegistrationForm()})
-
-
-
+    if request.method == 'POST':
+        print("is post")
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            print("Is valid")
+            user = User.objects.create_user(
+            username = request.POST['username'],
+            email = request.POST['email'],
+            password = request.POST['password'],
+            )
+        else:
+            print(request)
+    return render(request,'index.html',{'form': MessageForm(),'registrationform': RegistrationForm()})

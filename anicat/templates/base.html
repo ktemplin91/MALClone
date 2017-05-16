@@ -1,15 +1,14 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -26,7 +25,7 @@
 
     <script type="text/javascript" src="{% static 'main.js' %}"></script>
 
-    
+
   <style>
     .menutest{
       border-left: 3px solid grey;
@@ -43,12 +42,12 @@
     <div class="modal-content">
     <!--
     <div class="modal-header">
-    
+
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
       <h4 class="modal-title" id="modalLabelLarge"> Register / Login</h4>
-      
+
     </div>
     -->
     <!--TOP OF FORMS-->
@@ -63,7 +62,7 @@
       <div class="divde1 col-sm-4">
       <h2>Register</h2>
       {% csrf_token %}
-      <form method="post" id="new_user_form" action="user/create/">
+      <form method="POST" id="new_user_form">
       {% crispy registrationform %}
       </form>
       </div>
@@ -81,7 +80,7 @@
     </div>
 
     <!--Bot OF FORMS-->
-    <div class="topoftheworld col-sm-1">  
+    <div class="topoftheworld col-sm-1">
     </div>
     <!--END OF bot OF FORMS-->
 
@@ -111,13 +110,13 @@
             <a class="nav-link" href="{% url 'industrypage' %}">Industry</a>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'watchpage' %}">Watch</a>
-          <li class="nav-item">  
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'helppage' %}">Help</a>
           <!--<li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>-->
           </li>
         </ul>
-        
+
         <form class="form-inline mt-2 mt-md-0">
           <button type="button" class="btn btn-outline-primary mr-2 my-2" data-toggle="modal" data-target="#largeShoes">
             Login
@@ -131,11 +130,10 @@
       </div>
     </nav>
     </li>
-    
-   
+
     <!--Start of the test text -->
   {% block content %}
-	
+
   {% endblock content %}
      <!--End of Test Text -->
 
@@ -153,13 +151,59 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    
+
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+    // using jQuery
+
+        $(document).ready(function() {
+            $('#new_user_form').submit(function(event){
+                var form = {
+                    'username' : $('#id_username').val(),
+                    'email'    : $('#id_email').val(),
+                    'password' : $('#id_password').val(),
+                };
+                var csrftoken = getCookie('csrftoken')
+                event.preventDefault();
+                $.ajaxSetup({
+                    type : 'POST',
+                    url  : "{% url 'create_user' %}",
+                    data : form,
+                    dataType : 'json',
+                    beforeSend: function(xhr, settings) {
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                        }
+                    },
+                    success: function(){
+                          alert("Created New User");
+                    }
+                  });
+            });
+            function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+                return cookieValue;
+            }
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+        });
+    </script>
   </body>
 </html>

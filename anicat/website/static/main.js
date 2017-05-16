@@ -32,12 +32,12 @@ $("#post-form").change(function () {
     });
 
 
-$("reg-form").on('submit', 'new_user_form', function(e){
+$(document).on('submit', '#new_user_form', function(e){
     e.preventDefault();
 
     $.ajax({
         type: 'POST',
-        url: '/user/create',
+        url: 'user/create/',
         data:{
           username:$('#username').val(),
           email:$('#email').val(),
@@ -48,7 +48,7 @@ $("reg-form").on('submit', 'new_user_form', function(e){
           alert("Created New User");
 
         }
-        
+
 
     });
 });

@@ -10,7 +10,7 @@ class MessageForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
-    
+
 
     # Uni-form
     helper = FormHelper()
@@ -29,7 +29,7 @@ class RegistrationForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
-    
+
 
     # Uni-form
     helper = FormHelper()
@@ -40,6 +40,6 @@ class RegistrationForm(forms.Form):
         PrependedText('password', '@', placeholder="password", autocomplete='off'),
         FormActions(
             Submit('submit', 'Register', css_class="btn-primary"),
-            Submit('cancel', 'Cancel'),
+            Button('cancel', 'Cancel'),
         )
-    )    
+    )
