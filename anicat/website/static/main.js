@@ -32,7 +32,7 @@ $("#post-form").change(function () {
     });
 
 
-$("reg-form").on('submit', '#new_user_form', function(e){
+$("reg-form").on('submit', 'new_user_form', function(e){
     e.preventDefault();
 
     $.ajax({
