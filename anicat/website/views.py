@@ -70,18 +70,19 @@ def login(request):
 
 def validate_username(request):
     username = request.GET.get('username', None)
-    data = {
-        'is_taken': User.objects.filter(username__iexact=username).exists()
-    }
-    return JsonResponse(data)
+    data = { 'is_taken' : User.objects.filter(username__iexact=username).exists()}
+    return HttpResponse(json.dumps(data), content_type="application/json")
+
+def validate_email(request):
+    email = request.GET.get('email', None)
+    data = { 'is_taken' : User.objects.filter(email__iexact=email).exists()}
+    return HttpResponse(json.dumps(data), content_type="application/json")
 
 @csrf_protect
 def create_user(request):
     if request.method == 'POST':
-        print("is post")
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            print("Is valid")
             user = User.objects.create_user(
             username = request.POST['username'],
             email = request.POST['email'],

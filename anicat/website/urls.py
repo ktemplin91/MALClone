@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^help$', views.helppage, name='helppage'),
     url(r'^userprofile$', views.profilepage, name='profilepage'),
     url(r'^ajax/validate_username/$', views.validate_username, name='validate_username'),
+    url(r'^ajax/validate_email/$', views.validate_email, name='validate_email'),
     url(r'^user/create/$', views.create_user, name='create_user'),
 
 ]

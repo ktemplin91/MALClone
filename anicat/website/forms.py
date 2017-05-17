@@ -16,16 +16,16 @@ class MessageForm(forms.Form):
     helper = FormHelper()
     helper.form_class = 'form-horizontal'
     helper.layout = Layout(
-        Field('username', css_class='input-xlarge'),
+        Field('username', id = 'log_id', css_class='input-xlarge'),
         PrependedText('password', '@', placeholder="password", autocomplete='off'),
         FormActions(
             Submit('save_changes', 'Log In', css_class="btn-primary"),
-            Submit('cancel', 'Cancel'),
+            Button('cancel', 'Cancel'),
         )
     )
 
 class RegistrationForm(forms.Form):
-    email = forms.CharField()
+    email = forms.EmailField()
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
@@ -35,8 +35,8 @@ class RegistrationForm(forms.Form):
     helper = FormHelper()
     helper.form_class = 'form-horizontal'
     helper.layout = Layout(
-        Field('email', css_class='input-xlarge'),
-        Field('username', css_class='input-xlarge'),
+        Field('email', id='mail_id', css_class='input-xlarge', type='email'),
+        Field('username', id='reg_id', css_class='input-xlarge'),
         PrependedText('password', '@', placeholder="password", autocomplete='off'),
         FormActions(
             Submit('submit', 'Register', css_class="btn-primary"),
