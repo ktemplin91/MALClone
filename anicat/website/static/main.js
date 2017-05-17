@@ -12,6 +12,37 @@ function create_post() {
     console.log($('#post-text').val())
 };
 
+$('#post-form').submit(function(event){
+    var form = {
+        'username' : $('#log_id').val(),
+        'password' : $('#log_pass').val(),
+    };
+    var csrftoken = getCookie('csrftoken')
+    event.preventDefault();
+    $.ajaxSetup({
+        type : 'POST',
+        url  : "login/",
+        data : form,
+        dataType : 'json',
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        },
+        success : function(data){
+            if(data.success){
+              $('#largeShoes').modal('hide');
+              $('#new_user_form').trigger('reset');
+              alert("logged in");
+              location.reload();
+            }
+            else{
+                alert("error");
+            }
+        }
+      });
+      $.ajax({});
+});
 
 $("#reg_id").change(function () {
     var form = {

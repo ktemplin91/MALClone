@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect
 from website.forms import *
 import json
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def index(request):
@@ -54,19 +55,30 @@ def profilepage(request):
 	}
 	return render(request, "userprofile.html", {'form': MessageForm(),'registrationform': RegistrationForm()})
 
-
-def login(request):
+@csrf_protect
+def login_view(request):
     if request.method == 'POST':
-        login_form = MessageForm(request, request.POST)
-        response_data = {}
+        login_form = MessageForm(request.POST)
+        print(login_form)
         if login_form.is_valid():
-            response_data['result'] = 'Success!'
-            response_data['message'] = 'You"re logged in'
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request,user)
+                return HttpResponse(json.dumps({"success" : True}), content_type="application/json")
+            else:
+                print("Here1")
+                return HttpResponse(json.dumps({"success" : False}), content_type="application/json")
         else:
-            response_data['result'] = 'failed'
-            response_data['message'] = 'You messed up'
+            print("Here2")
+            return HttpResponse(json.dumps({"success" : False}), content_type="application/json")
+    return HttpResponse(json.dumps({"success" : False}), content_type="application/json")
 
-        return HttpResponse(json.dumps(response_data), content_type="application/json")
+@csrf_protect
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
 
 def validate_username(request):
     username = request.GET.get('username', None)

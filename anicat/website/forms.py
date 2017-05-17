@@ -15,11 +15,12 @@ class MessageForm(forms.Form):
     # Uni-form
     helper = FormHelper()
     helper.form_class = 'form-horizontal'
+    helper.form_id = 'post-form'
     helper.layout = Layout(
         Field('username', id = 'log_id', css_class='input-xlarge'),
-        PrependedText('password', '@', placeholder="password", autocomplete='off'),
+        PrependedText('password', '@', placeholder='password',  id='log_pass'),
         FormActions(
-            Submit('save_changes', 'Log In', css_class="btn-primary"),
+            Submit('submit', 'Log In', css_class="btn-primary"),
             Button('cancel', 'Cancel'),
         )
     )
@@ -34,6 +35,7 @@ class RegistrationForm(forms.Form):
     # Uni-form
     helper = FormHelper()
     helper.form_class = 'form-horizontal'
+    helper.form_id = 'new-user-form'
     helper.layout = Layout(
         Field('email', id='mail_id', css_class='input-xlarge', type='email'),
         Field('username', id='reg_id', css_class='input-xlarge'),

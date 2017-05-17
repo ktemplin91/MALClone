@@ -58,10 +58,7 @@
       </div>
       <div class="divde1 col-sm-4">
       <h2>Register</h2>
-      {% csrf_token %}
-      <form method="POST" id="new_user_form">
       {% crispy registrationform %}
-      </form>
       </div>
       <div class="menutest2 col-sm-1">
             </div>
@@ -69,10 +66,7 @@
             </div>
       <div class="divide2 col-sm-4">
       <h2>Login</h2>
-      {% csrf_token %}
-      <form method="GET" id="post-form">
       {% crispy form %}
-      </form>
       </div>
     </div>
 
@@ -114,12 +108,13 @@
           </li>
         </ul>
 
-        <form class="form-inline mt-2 mt-md-0">
-          <button type="button" class="btn btn-outline-primary mr-2 my-2" data-toggle="modal" data-target="#largeShoes">
-            Login
-          </button>
-        </form>
-
+        {% if user.is_authenticated %}
+            <form method='POST' action='logout/'> {% csrf_token %} <input type='submit' name='logout' value='logout' class="btn btn-outline-primary mr-2 my-2"></form>
+        {% else %}
+            <button type="button" class="btn btn-outline-primary mr-2 my-2" data-toggle="modal" data-target="#largeShoes">
+              Login
+            </button>
+        {% endif %}
         <form class="form-inline mt-2 mt-md-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
