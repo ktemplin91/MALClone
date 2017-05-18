@@ -110,6 +110,7 @@ $('#new_user_form').submit(function(event){
       });
       $.ajax({});
 });
+
 function getCookie(name) {
 var cookieValue = null;
 if (document.cookie && document.cookie !== '') {

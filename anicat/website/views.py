@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect
 from website.forms import *
@@ -48,12 +49,10 @@ def helppage(request):
 	}
 	return render(request, "helppage.html", {'form': MessageForm(),'registrationform': RegistrationForm()})
 
-
+@login_required(login_url='/', redirect_field_name=None)
 def profilepage(request):
-	context={
+    return render(request, "userprofile.html", {'form': MessageForm(),'registrationform': RegistrationForm()})
 
-	}
-	return render(request, "userprofile.html", {'form': MessageForm(),'registrationform': RegistrationForm()})
 
 @csrf_protect
 def login_view(request):
