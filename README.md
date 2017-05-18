@@ -1,1 +1,1 @@
-Ya boi
+Ani-Cat short of "Anime Catalog" is a full database of everything Anime. Our Database includes a huge library of anime and manga. Create a list of your collection and things you have seen in the past. The one the only Ani-Cat!

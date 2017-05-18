@@ -18,7 +18,7 @@ class MessageForm(forms.Form):
     helper.form_id = 'post-form'
     helper.layout = Layout(
         Field('username', id = 'log_id', css_class='input-xlarge'),
-        PrependedText('password', '@', placeholder='password',  id='log_pass'),
+        Field('password',  id='log_pass'),
         FormActions(
             Submit('submit', 'Log In', css_class="btn-primary"),
             Button('cancel', 'Cancel'),
@@ -39,7 +39,7 @@ class RegistrationForm(forms.Form):
     helper.layout = Layout(
         Field('email', id='mail_id', css_class='input-xlarge', type='email'),
         Field('username', id='reg_id', css_class='input-xlarge'),
-        PrependedText('password', '@', placeholder="password", autocomplete='off'),
+        Field('password', autocomplete='off'),
         FormActions(
             Submit('submit', 'Register', css_class="btn-primary"),
             Button('cancel', 'Cancel'),
