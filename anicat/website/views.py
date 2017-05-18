@@ -58,8 +58,11 @@ def helppage(request):
 
 @login_required(login_url='/', redirect_field_name=None)
 def profilepage(request,username):
+    #if request.user.is_authenticated():
+     #   return HttpResponseRedirect(reverse('profilepage', kwargs={'username': request.user.username}))   
+    dic = { 'Home' : '/', 'Anime' : 'anime', 'Manga' : 'manga', 'Community' : 'community', 'Industry' : 'industry' , 'Watch' : 'watch', 'Help' : 'help' , 'Profile' : 'profile' }
     u = User.objects.get(username=username)
-    return render(request, "userprofile.html", {'form': MessageForm(),'registrationform': RegistrationForm()})
+    return render(request, "userprofile.html", {'form': MessageForm(),'registrationform': RegistrationForm(),'current_path' : 'Profile' ,'dic' : dic})
 
 
 @csrf_protect
