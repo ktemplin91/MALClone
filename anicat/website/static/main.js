@@ -13,22 +13,12 @@ function create_post() {
 };
 
 $('#post-form').submit(function(event){
-    var form = {
-        'username' : $('#log_id').val(),
-        'password' : $('#log_pass').val(),
-    };
-    var csrftoken = getCookie('csrftoken')
+    var form = $('#post-form').serialize()
     event.preventDefault();
     $.ajaxSetup({
         type : 'POST',
         url  : "login/",
         data : form,
-        dataType : 'json',
-        beforeSend: function(xhr, settings) {
-            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-            }
-        },
         success : function(data){
             if(data.success){
               $('#largeShoes').modal('hide');
@@ -80,24 +70,13 @@ $("#mail_id").change(function () {
     });
 });
 
-$('#new_user_form').submit(function(event){
-    var form = {
-        'username' : $('#reg_id').val(),
-        'email'    : $('#mail_id').val(),
-        'password' : $('#id_password').val(),
-    };
-    var csrftoken = getCookie('csrftoken')
+$('#new-user-form').submit(function(event){
+    var form = $('#new-user-form').serialize()
     event.preventDefault();
     $.ajaxSetup({
         type : 'POST',
         url  : "user/create/",
         data : form,
-        dataType : 'json',
-        beforeSend: function(xhr, settings) {
-            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-            }
-        },
         success : function(){
               $('#largeShoes').modal('hide');
               $('#new_user_form').trigger('reset');
@@ -110,21 +89,3 @@ $('#new_user_form').submit(function(event){
       });
       $.ajax({});
 });
-
-function getCookie(name) {
-var cookieValue = null;
-if (document.cookie && document.cookie !== '') {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = jQuery.trim(cookies[i]);
-        if (cookie.substring(0, name.length + 1) === (name + '=')) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-        }
-    }
-}
-    return cookieValue;
-}
-function csrfSafeMethod(method) {
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}

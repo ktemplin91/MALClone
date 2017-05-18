@@ -7,8 +7,8 @@ from crispy_forms.bootstrap import AppendedText, PrependedText, FormActions
 
 
 class MessageForm(forms.Form):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(required=True)
+    password = forms.CharField(required=True, widget=forms.PasswordInput)
 
 
 

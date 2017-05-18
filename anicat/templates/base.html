@@ -58,6 +58,7 @@
       </div>
       <div class="divde1 col-sm-4">
       <h2>Register</h2>
+        {% csrf_token %}
       {% crispy registrationform %}
       </div>
       <div class="menutest2 col-sm-1">
@@ -66,6 +67,7 @@
             </div>
       <div class="divide2 col-sm-4">
       <h2>Login</h2>
+       {% csrf_token %}
       {% crispy form %}
       </div>
     </div>
@@ -139,7 +141,8 @@
     <script>
         $('[id=button-id-cancel]').click(function() {
             $('#largeShoes').modal('hide');
-            $('#new_user_form').trigger('reset');
+            $('#new-user-form').trigger('reset');
+            $('#post-form').trigger('reset');
         });
     </script>
 

@@ -56,12 +56,13 @@ def profilepage(request):
 
 @csrf_protect
 def login_view(request):
+    dic = {}
     if request.method == 'POST':
-        login_form = MessageForm(request.POST)
-        print(login_form)
+        login_form = MessageForm(request.POST or None)
         if login_form.is_valid():
-            username = request.POST['username']
-            password = request.POST['password']
+            username = login_form.cleaned_data['username']
+            password = login_form.cleaned_data['password']
+            print(login_form['password'])
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request,user)
@@ -92,12 +93,12 @@ def validate_email(request):
 @csrf_protect
 def create_user(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = RegistrationForm(request.POST or None)
         if form.is_valid():
             user = User.objects.create_user(
-            username = request.POST['username'],
-            email = request.POST['email'],
-            password = request.POST['password'],
+            username = form.cleaned_data['username'],
+            email = form.cleaned_data['email'],
+            password = form.cleaned_data['password'],
             )
         else:
             print(request)
