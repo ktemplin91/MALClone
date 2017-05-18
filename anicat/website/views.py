@@ -9,45 +9,52 @@ import json
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
+
 def index(request):
-    # This view is missing all form handling logic for simplicity of the example
-    return render(request, 'index.html', {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Home'})
+    dic = { 'Home' : '/', 'Anime' : 'anime', 'Manga' : 'manga', 'Community' : 'community', 'Industry' : 'industry' , 'Watch' : 'watch', 'Help' : 'help' }
+    return render(request, 'index.html', {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Home', 'dic' : dic})
 
 def animepage(request):
-	context={
+    context={
 
-	}
-	return render(request,"animepage.html",{'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Anime'})
+    }
+    dic = { 'Home' : '/', 'Anime' : 'anime', 'Manga' : 'manga', 'Community' : 'community', 'Industry' : 'industry' , 'Watch' : 'watch', 'Help' : 'help' }
+    return render(request,"animepage.html",{'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Anime', 'dic' : dic})
 
 def mangapage(request):
-	context={
+    context={
 
-	}
-	return render(request,"mangapage.html",{'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Manga'})
+    }
+    dic = { 'Home' : '/', 'Anime' : 'anime', 'Manga' : 'manga', 'Community' : 'community', 'Industry' : 'industry' , 'Watch' : 'watch', 'Help' : 'help' }
+    return render(request,"mangapage.html",{'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Manga', 'dic' : dic})
 
 def communitypage(request):
-	context={
+    context={
 
-	}
-	return render(request, "communitypage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Community'})
+    }
+    dic = { 'Home' : '/', 'Anime' : 'anime', 'Manga' : 'manga', 'Community' : 'community', 'Industry' : 'industry' , 'Watch' : 'watch', 'Help' : 'help' }
+    return render(request, "communitypage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Community', 'dic' : dic})
 
 def industrypage(request):
-	context={
+    context={
 
-	}
-	return render(request, "industrypage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Industry'})
+    }
+    dic = { 'Home' : '/', 'Anime' : 'anime', 'Manga' : 'manga', 'Community' : 'community', 'Industry' : 'industry' , 'Watch' : 'watch', 'Help' : 'help' }
+    return render(request, "industrypage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Industry', 'dic' : dic})
 
 def watchpage(request):
-	context={
+    context={
 
-	}
-	return render(request, "watchpage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Watch'})
+    }
+    dic = { 'Home' : '/', 'Anime' : 'anime', 'Manga' : 'manga', 'Community' : 'community', 'Industry' : 'industry' , 'Watch' : 'watch', 'Help' : 'help' }
+    return render(request, "watchpage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Watch', 'dic' : dic})
 
 def helppage(request):
-	context={
+    context={
 
-	}
-	return render(request, "helppage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Help'})
+    }
+    dic = { 'Home' : '/', 'Anime' : 'anime', 'Manga' : 'manga', 'Community' : 'community', 'Industry' : 'industry' , 'Watch' : 'watch', 'Help' : 'help' }
+    return render(request, "helppage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Help', 'dic' : dic})
 
 @login_required(login_url='/', redirect_field_name=None)
 def profilepage(request):
