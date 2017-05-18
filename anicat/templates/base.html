@@ -7,7 +7,6 @@
     <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
     <script>
         $(document).ready(function(){
-            $('#{{current_path}}l').prepend("<span class='sr-only'>(current)</span>")
             $('#{{current_path}}').toggleClass('nav-item nav-item active')
         });
     </script>
@@ -92,24 +91,14 @@
       <a class="navbar-brand" href="#">Ani-Cat</a>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li id='Home' class="nav-item">
-            <a id='Homel' class="nav-link" href="{% url 'index' %}">Home</a>
-          </li>
-           <li id='Anime' class="nav-item">
-            <a id='Animel' class="nav-link" href="{% url 'animepage' %}">Anime</a>
-          <li id='Manga' class="nav-item">
-            <a id ='Mangal' class="nav-link" href="{% url 'mangapage' %}">Manga</a>
-          <li id='Community' class="nav-item">
-            <a id='Communityl' class="nav-link" href="{% url 'communitypage' %}">Community</a>
-          <li id='Industry' class="nav-item">
-            <a  id='Industryl' class="nav-link" href="{% url 'industrypage' %}">Industry</a>
-          <li  id='Watch' class="nav-item">
-            <a id='Watchl' class="nav-link" href="{% url 'watchpage' %}">Watch</a>
-          <li id='Help' class="nav-item">
-            <a id='Helpl' class="nav-link" href="{% url 'helppage' %}">Help</a>
-          <!--<li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>-->
-          </li>
+        {% for id, path in dic.items%}
+            {%if id == current_path %}
+            <li class="nav-item active">
+            {%else%}
+            <li class="nav-item">
+            {%endif%}
+            <a class="nav-link" href='{{path}}'>{{id}}</a>
+            {%endfor%}
         </ul>
 
         {% if user.is_authenticated %}
