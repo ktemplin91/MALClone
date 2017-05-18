@@ -57,7 +57,8 @@ def helppage(request):
     return render(request, "helppage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Help', 'dic' : dic})
 
 @login_required(login_url='/', redirect_field_name=None)
-def profilepage(request):
+def profilepage(request,username):
+    u = User.objects.get(username=username)
     return render(request, "userprofile.html", {'form': MessageForm(),'registrationform': RegistrationForm()})
 
 
