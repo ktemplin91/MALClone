@@ -5,6 +5,12 @@
 <html lang="en">
   <head>
     <script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+    <script>
+        $(document).ready(function(){
+            $('#{{current_path}}l').prepend("<span class='sr-only'>(current)</span>")
+            $('#{{current_path}}').toggleClass('nav-item nav-item active')
+        });
+    </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -16,7 +22,6 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>Ani-Cat</title>
-
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}" />
 
@@ -29,7 +34,6 @@
       height: auto;
     }
   </style>
-
   </head>
   <body>
 
@@ -58,7 +62,6 @@
       </div>
       <div class="divde1 col-sm-4">
       <h2>Register</h2>
-        {% csrf_token %}
       {% crispy registrationform %}
       </div>
       <div class="menutest2 col-sm-1">
@@ -67,7 +70,6 @@
             </div>
       <div class="divide2 col-sm-4">
       <h2>Login</h2>
-       {% csrf_token %}
       {% crispy form %}
       </div>
     </div>
@@ -90,21 +92,21 @@
       <a class="navbar-brand" href="#">Ani-Cat</a>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+          <li id='Home' class="nav-item">
+            <a id='Homel' class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
-           <li class="nav-item">
-            <a class="nav-link" href="{% url 'animepage' %}">Anime</a>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'mangapage' %}">Manga</a>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'communitypage' %}">Community</a>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'industrypage' %}">Industry</a>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'watchpage' %}">Watch</a>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'helppage' %}">Help</a>
+           <li id='Anime' class="nav-item">
+            <a id='Animel' class="nav-link" href="{% url 'animepage' %}">Anime</a>
+          <li id='Manga' class="nav-item">
+            <a id ='Mangal' class="nav-link" href="{% url 'mangapage' %}">Manga</a>
+          <li id='Community' class="nav-item">
+            <a id='Communityl' class="nav-link" href="{% url 'communitypage' %}">Community</a>
+          <li id='Industry' class="nav-item">
+            <a  id='Industryl' class="nav-link" href="{% url 'industrypage' %}">Industry</a>
+          <li  id='Watch' class="nav-item">
+            <a id='Watchl' class="nav-link" href="{% url 'watchpage' %}">Watch</a>
+          <li id='Help' class="nav-item">
+            <a id='Helpl' class="nav-link" href="{% url 'helppage' %}">Help</a>
           <!--<li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>-->
           </li>
@@ -141,8 +143,7 @@
     <script>
         $('[id=button-id-cancel]').click(function() {
             $('#largeShoes').modal('hide');
-            $('#new-user-form').trigger('reset');
-            $('#post-form').trigger('reset');
+            $('#new_user_form').trigger('reset');
         });
     </script>
 

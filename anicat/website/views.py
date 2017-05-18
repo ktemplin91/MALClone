@@ -11,43 +11,43 @@ from django.contrib.auth import authenticate, login, logout
 
 def index(request):
     # This view is missing all form handling logic for simplicity of the example
-    return render(request, 'index.html', {'form': MessageForm(),'registrationform': RegistrationForm()})
+    return render(request, 'index.html', {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Home'})
 
 def animepage(request):
 	context={
 
 	}
-	return render(request,"animepage.html",{'form': MessageForm(),'registrationform': RegistrationForm()})
+	return render(request,"animepage.html",{'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Anime'})
 
 def mangapage(request):
 	context={
 
 	}
-	return render(request,"mangapage.html",{'form': MessageForm(),'registrationform': RegistrationForm()})
+	return render(request,"mangapage.html",{'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Manga'})
 
 def communitypage(request):
 	context={
 
 	}
-	return render(request, "communitypage.html", {'form': MessageForm(),'registrationform': RegistrationForm()})
+	return render(request, "communitypage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Community'})
 
 def industrypage(request):
 	context={
 
 	}
-	return render(request, "industrypage.html", {'form': MessageForm(),'registrationform': RegistrationForm()})
+	return render(request, "industrypage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Industry'})
 
 def watchpage(request):
 	context={
 
 	}
-	return render(request, "watchpage.html", {'form': MessageForm(),'registrationform': RegistrationForm()})
+	return render(request, "watchpage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Watch'})
 
 def helppage(request):
 	context={
 
 	}
-	return render(request, "helppage.html", {'form': MessageForm(),'registrationform': RegistrationForm()})
+	return render(request, "helppage.html", {'form': MessageForm(),'registrationform': RegistrationForm(), 'current_path' : 'Help'})
 
 @login_required(login_url='/', redirect_field_name=None)
 def profilepage(request):
